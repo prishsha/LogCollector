@@ -1,14 +1,17 @@
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class HeartbeatManager {
 
-    // serviceName -> last heartbeat time
+    // service -> last heartbeat time
     public static Map<String, Long> heartbeats = new HashMap<>();
 
-    public static void updateHeartbeat(String serviceName) {
-        heartbeats.put(serviceName, System.currentTimeMillis());
+    // service -> status (UP / DOWN)
+    public static Map<String, String> status = new HashMap<>();
+
+    public static void updateHeartbeat(String service) {
+        heartbeats.put(service, System.currentTimeMillis());
+        status.put(service, "UP");
     }
 
     public static void checkFailures() {
@@ -17,8 +20,11 @@ public class HeartbeatManager {
         for (String service : heartbeats.keySet()) {
             long lastSeen = heartbeats.get(service);
 
-            if (now - lastSeen > 5000) { // 5 seconds timeout
-                System.out.println("NODE FAILURE DETECTED: " + service);
+            if (now - lastSeen > 5000) {
+                if (!"DOWN".equals(status.get(service))) {
+                    status.put(service, "DOWN");
+                    System.out.println("NODE FAILURE DETECTED: " + service);
+                }
             }
         }
     }
