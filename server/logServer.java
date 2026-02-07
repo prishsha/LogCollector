@@ -6,7 +6,7 @@ public class LogServer {
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
 
         server.createContext("/log", new LogHandler());
-        server.createContext("/", new dashboardHandler());
+        server.createContext("/", new DashboardHandler());
 
         server.setExecutor(null);
         server.start();
