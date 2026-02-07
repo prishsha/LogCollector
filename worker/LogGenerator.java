@@ -1,3 +1,4 @@
+package worker;
 import java.util.Random;
 
 public class LogGenerator {

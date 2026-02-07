@@ -1,3 +1,4 @@
+package worker;
 public class WorkerNode {
 
     public static void main(String[] args) throws Exception {
