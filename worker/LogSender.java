@@ -4,7 +4,8 @@ import java.nio.charset.StandardCharsets;
 
 public class LogSender {
 
-    public static void sendLog(String urlStr) throws Exception {
+    public static void sendLog(String urlStr, String serviceName) throws Exception {
+
         URL url = new URL(urlStr);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
@@ -12,9 +13,10 @@ public class LogSender {
         con.setRequestProperty("Content-Type", "application/json");
         con.setDoOutput(true);
 
-        byte[] input = LogGenerator.generate().getBytes(StandardCharsets.UTF_8);
-        con.getOutputStream().write(input);
+        byte[] input = LogGenerator.generate(serviceName)
+                .getBytes(StandardCharsets.UTF_8);
 
+        con.getOutputStream().write(input);
         con.getInputStream();
     }
 }

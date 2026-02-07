@@ -1,13 +1,15 @@
 import java.util.Random;
 
 public class LogGenerator {
+
     static String[] levels = {"INFO", "WARN", "ERROR"};
 
-    public static String generate() {
+    public static String generate(String serviceName) {
+
         return "{"
-                + "\"service\":\"order-service\","
+                + "\"service\":\"" + serviceName + "\","
                 + "\"level\":\"" + levels[new Random().nextInt(3)] + "\","
-                + "\"message\":\"Order processed\","
+                + "\"message\":\"Operation executed\","
                 + "\"timestamp\":" + System.currentTimeMillis()
                 + "}";
     }
