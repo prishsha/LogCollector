@@ -19,4 +19,19 @@ public class LogSender {
         con.getOutputStream().write(input);
         con.getInputStream();
     }
+
+    public static void sendHeartbeat(String urlStr, String serviceName) throws Exception {
+
+    URL url = new URL(urlStr);
+    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+    con.setRequestMethod("POST");
+    con.setRequestProperty("Content-Type", "application/json");
+    con.setDoOutput(true);
+
+    String heartbeat = "{\"service\":\"" + serviceName + "\"}";
+    con.getOutputStream().write(heartbeat.getBytes());
+
+    con.getInputStream();
+}
 }

@@ -11,6 +11,7 @@ public class WorkerNode {
 
         while (true) {
             LogSender.sendLog("http://localhost:8080/log", serviceName);
+            LogSender.sendHeartbeat("http://localhost:8080/heartbeat", serviceName);
             Thread.sleep(2000);
         }
     }
