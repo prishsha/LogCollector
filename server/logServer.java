@@ -24,10 +24,11 @@ public class LogServer {
                 }
             }
         }).start();
-
-        // ✅ THIS WAS MISSING
         server.start();
 
+        System.out.println("Name: Prisha Vadhavkar");
+        System.out.println("Registration Number: 23BIT0010");
         System.out.println("Central Log Server running on port 8080");
+
     }
 }

@@ -17,6 +17,11 @@ public class DashboardHandler implements HttpHandler {
 
         html.append("<h1>Central Log Dashboard</h1>");
 
+        html.append("<p style='font-size:14px; color:gray;'>");
+        html.append("<strong>Name:</strong> Prisha Vadhavkar &nbsp; | &nbsp; ");
+        html.append("<strong>Registration Number:</strong> 23BIT0010");
+        html.append("</p>");
+
         // 🔹 Node status section
         html.append("<h2>Node Status</h2>");
         html.append("<table border='1'><tr><th>Service</th><th>Status</th></tr>");
@@ -24,11 +29,11 @@ public class DashboardHandler implements HttpHandler {
         for (Map.Entry<String, String> entry : HeartbeatManager.status.entrySet()) {
             String color = entry.getValue().equals("UP") ? "green" : "red";
             html.append("<tr>")
-                .append("<td>").append(entry.getKey()).append("</td>")
-                .append("<td style='color:").append(color).append("'>")
-                .append(entry.getValue())
-                .append("</td>")
-                .append("</tr>");
+                    .append("<td>").append(entry.getKey()).append("</td>")
+                    .append("<td style='color:").append(color).append("'>")
+                    .append(entry.getValue())
+                    .append("</td>")
+                    .append("</tr>");
         }
 
         html.append("</table>");
