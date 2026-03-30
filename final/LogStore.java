@@ -70,4 +70,8 @@ public class LogStore {
     public Map<String, Integer> getLogCounts() {
         return Collections.unmodifiableMap(logCounts);
     }
+
+    public List<LogEvent> getAllLogs() {
+    return new ArrayList<>(logs);
+}
 }

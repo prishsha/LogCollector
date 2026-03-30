@@ -94,13 +94,25 @@ public class HTMLBuilder {
     }
 
     private static String header() {
-        return """
+    return """
 <header>
   <h1>Order Pipeline Health Dashboard</h1>
   <span class="tag">LIVE</span>
+
+  <a href="/download" style="
+      margin-left:auto;
+      font-size:12px;
+      text-decoration:none;
+      color:#00d4ff;
+      border:1px solid #00d4ff;
+      padding:4px 10px;
+      border-radius:4px;">
+      Download Logs
+  </a>
+
 </header>
 """;
-    }
+}
 
     private static String statsBar(long total, double lps, long uptime, int svcs, int failed) {
         return "<div class='stats-bar'>" +
