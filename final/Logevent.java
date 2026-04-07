@@ -20,7 +20,6 @@ public class LogEvent {
     }
 
     // Parse a pipe-delimited line sent over TCP
-    // Format: SERVICE|LEVEL|MESSAGE|TIMESTAMP
     public static LogEvent parse(String raw) {
         String[] parts = raw.split("\\|", 4);
         if (parts.length < 4) return null;

@@ -17,8 +17,6 @@ public class MainServer {
         // Give the TCP server a moment to bind before workers connect
         Thread.sleep(500);
 
-        // --- Spin up worker nodes ---
-
         startWorker("AuthService",
             new String[]{
                 "User login successful",

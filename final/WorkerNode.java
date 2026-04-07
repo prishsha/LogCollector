@@ -30,7 +30,9 @@ public class WorkerNode implements Runnable {
     public void run() {
         // retry loop — keeps trying to connect if server isn't ready
         while (!Thread.currentThread().isInterrupted()) {
-            try (Socket socket = new Socket("localhost", tcpPort);
+            String host = System.getenv().getOrDefault("SERVER_HOST", "localhost");
+            try (
+                Socket socket = new Socket(host, tcpPort);
                  PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
                 System.out.println("[WorkerNode] " + serviceName + " connected.");

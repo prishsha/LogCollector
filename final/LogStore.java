@@ -6,7 +6,6 @@ import java.util.concurrent.*;
 public class LogStore {
 
     private static final int MAX_LOGS = 200;
-    // How long (ms) before a service is considered failed
     private static final long FAILURE_TIMEOUT_MS = 6000;
 
     private final Deque<LogEvent> logs = new ConcurrentLinkedDeque<>();
@@ -19,7 +18,6 @@ public class LogStore {
 
     public void add(LogEvent event) {
         logs.addFirst(event);
-        // trim to max
         while (logs.size() > MAX_LOGS) logs.removeLast();
 
         lastSeen.put(event.service, event.timestamp);
